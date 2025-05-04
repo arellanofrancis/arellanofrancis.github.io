@@ -6,62 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Search for an Anime</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    .picture-container {
-      width: 120px;
-      height: 120px;
-      background-color: #e0e0e0;
-      border-radius: 100px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-    }
-
-    .picture-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .anime-card {
-      margin-bottom: 20px;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
-
-    .anime-card img {
-      border-radius: 10px;
-      max-height: 250px;
-      object-fit: cover;
-    }
-
-    #container {
-      background-color: #f9f9f9;
-      padding: 20px;
-    }
-
-    .search-bar {
-      border-radius: 5px;
-    }
-
-    .title-container {
-      background-color: #808080;
-    }
-
-    .input-group {
-      width: 100%;
-    }
-
-    .btn-search {
-      border-radius: 5px;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+  <div class="container mt-3">
+    <a href="javascript:history.back()" class="btn btn-secondary">Return</a>
+  </div>
+
   <div class="container-fluid py-3 title-container">
     <div class="container">
       <div class="row">
@@ -96,7 +48,7 @@
       const response = await fetch(`https://api.jikan.moe/v4/anime?q=${animeName}&limit=1`);
       const data = await response.json();
       if (data.data.length > 0) {
-        animeData = data.data[0];3
+        animeData = data.data[0];
         displayAnime(animeData);
       } else {
         document.getElementById('container').innerHTML = '<div class="text-center text-muted mt-5">No anime found.</div>';
