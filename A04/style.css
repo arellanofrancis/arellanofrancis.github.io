@@ -27,3 +27,24 @@ body {
     color: #fff;
 }
 
+<<<<<<< HEAD
+=======
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.dark-mode .card {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+body.dark-mode .highlight {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+body.dark-mode .navbar {
+    background-color: #000000 !important;
+}
+>>>>>>> 9e499a527b2b65bfde4eb03d256c7a168920dec1
