@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Demon Slayer Character Search</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    .picture-container {
+      width: 150px;
+      height: 150px;
+      background-color: lightgrey;
+      border-radius: 100px;
+      overflow: hidden;
+      margin: auto;
+    }
+
+    .picture-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid py-3" style="background-color: rgb(255, 65, 65);">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h3 class="text-white">Demon Slayer Character Search</h3>
+        </div>
+      </div>
+      <div class="container mt-3">
+        <div class="mb-5">
+            <a href="javascript:history.back()" class="btn btn-secondary">Return</a>
+        </div>
+</div>
+
+<script>
+  function goBack() {
+    
+    window.location.href = 'index.html';
+  }
+</script>
+
+    </div>
+  </div>
+
+  <div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-6">
+        <form id="searchForm" class="d-flex mb-3" onsubmit="return false;">
+          <input type="text" id="searchInput" class="form-control rounded-5 p-2" placeholder="Enter character name..." />
+          <button type="button" class="btn btn-primary ms-2 rounded-5" onclick="searchCharacter()">Search</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="paginationInfo"></div>
+
+  <div class="container mt-3">
+    <div class="row" id="charactersContainer"></div>
+  </div>
+
+  <script>
+    const apiData = {
+      "pagination": {
+        "totalElements": 45,
+        "elementsOnPage": 5,
+        "currentPage": 1,
+        "totalPages": 9,
+        "previousPage": "",
+        "nextPage": "https://www.demonslayer-api.com/api/v1/characters?page=2"
+      },
+      "content": [
+        {
+          "id": 1,
+          "name": "Tanjiro Kamado",
+          "age": 16,
+          "gender": "Male",
+          "race": "Human",
+          "description": "Is the main protagonist of Demon Slayer. He joined the Demon Slayer Corp to find a remedy to turn his sister, Nezuko Kamado, back into a human and to hunt down and kill demons.",
+          "img": "https://www.demonslayer-api.com/api/v1/characters/images/1.webp",
+          "affiliation_id": 1,
+          "arc_id": 1,
+          "quote": "Work at it. All I can do is work hard! That´s the story of my life!"
+        },
+        {
+          "id": 2,
+          "name": "Nezuko Kamado",
+          "age": 14,
+          "gender": "Female",
+          "race": "Demon",
+          "description": "She is a demon and the younger sister of Tanjiro Kamado and one of the two remaining members of the Kamado family. Formerly a human, she was attacked and transformed into a demon by Muzan Kibutsuji.",
+          "img": "https://www.demonslayer-api.com/api/v1/characters/images/2.webp",
+          "affiliation_id": 1,
+          "arc_id": 1,
+          "quote": "Humans are to be protected and saved... I will never hurt them."
+        },
+        {
+          "id": 3,
+          "name": "Giyu Tomioka",
+          "age": 21,
+          "gender": "Male",
+          "race": "Human",
+          "description": "He is a Demon Slayer of the Demon Slayer Corps and the current Water Hashira. He has a reserved personality and a very strong sense of justice.",
+          "img": "https://www.demonslayer-api.com/api/v1/characters/images/3.webp",
+          "affiliation_id": 2,
+          "arc_id": 1,
+          "quote": "Feel the rage. The powerful, pure rage of not being able to forgive will become your unswerving drive to take action."
+        },
+        {
+          "id": 4,
+          "name": "Sakonji Urokodaki",
+          "age": 70,
+          "gender": "Male",
+          "race": "Human",
+          "description": "Sakonji Urokodaki is a retired member of the Demon Slayer Corps, having held the position of the previous Water Hashira. He is the main cultivator of the Water Breathing style, having trained Makomo, Sabito, Giyu Tomioka, and Tanjiro Kamado.",
+          "img": "https://www.demonslayer-api.com/api/v1/characters/images/4.webp",
+          "affiliation_id": 3,
+          "arc_id": 1,
+          "quote": "Remember to take a long breath so the oxygen flows into every cell in your body."
+        },
+        {
+          "id": 5,
+          "name": "Sabito",
+          "age": 13,
+          "gender": "Male",
+          "race": "Human",
+          "description": "Sabito was a former apprentice of Sakonji Urokodaki. He appeared to assist Tanjiro Kamado in his preparations for the Final Selection exam.",
+          "img": "https://www.demonslayer-api.com/api/v1/characters/images/5.webp",
+          "affiliation_id": 1,
+          "arc_id": 1,
+          "quote": "You have to make sure you never forget any of the secrets Urokodaki taught you! Pound it into the marrow of your bones!"
+        }
+      ]
+    };
+
+    function searchCharacter() {
+      const query = document.getElementById("searchInput").value.trim().toLowerCase();
+      const container = document.getElementById("charactersContainer");
+      const paginationInfo = document.getElementById("paginationInfo");
+
+      container.innerHTML = "";
+      paginationInfo.innerHTML = "";
+
+      if (!query) {
+        alert("Please enter a character name to search.");
+        return;
+      }
+
+      const results = apiData.content.filter(char =>
+        char.name.toLowerCase().includes(query)
+      );
+
+      if (results.length === 0) {
+        container.innerHTML = `<div class="col-12 text-center mt-4">
+          <div class="alert alert-warning">No characters found with name "<strong>${query}</strong>"</div>
+        </div>`;
+        return;
+      }
+
+      paginationInfo.innerHTML = `
+        <div class="alert alert-info text-center">
+          Showing ${results.length} result(s) from a total of ${apiData.pagination.totalElements} characters.
+        </div>
+      `;
+
+      results.forEach(char => {
+        container.innerHTML += `
+          <div class="col-12 col-md-6 col-lg-4 my-3">
+            <div class="card h-100 shadow-sm rounded-4 p-3 text-center">
+              <div class="picture-container mb-3">
+                <img src="${char.img}" alt="${char.name}" />
+              </div>
+              <h5>${char.name}</h5>
+              <p><em>Age:</em> ${char.age} | <em>Gender:</em> ${char.gender} | <em>Race:</em> ${char.race}</p>
+              <p>${char.description}</p>
+              <blockquote class="blockquote text-muted fst-italic">
+                “${char.quote}”
+              </blockquote>
+              <button class="btn btn-outline-primary rounded-5" onclick="viewDetails(${char.id})">View Details</button>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function viewDetails(id) {
+      window.location.href = `view.html?id=${id}`;
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
