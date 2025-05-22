@@ -1,4 +1,4 @@
-/* Fonts & Base */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 body, html {
@@ -20,13 +20,13 @@ a:hover {
   color: #fff;
 }
 
-/* Layout */
+
 .wrapper {
   display: flex;
   min-height: 100vh;
 }
 
-/* Sidebar */
+
 .sidebar {
   background: linear-gradient(180deg, #0a3d62, #162a55);
   width: 250px;
@@ -82,7 +82,6 @@ a:hover {
   font-size: 1.3rem;
 }
 
-/* Main Content */
 .content {
   margin-left: 250px;
   padding: 3rem 4rem;
@@ -127,7 +126,6 @@ a:hover {
   text-align: center;
 }
 
-/* Sections */
 .section {
   margin-bottom: 4rem;
 }
@@ -142,7 +140,7 @@ a:hover {
   user-select: none;
 }
 
-/* Profile Info */
+
 .profile-info p {
   font-size: 1.1rem;
   margin-bottom: 1rem;
@@ -158,7 +156,7 @@ a:hover {
   font-size: 1.3rem;
 }
 
-/* Projects */
+
 .project-card {
   background: #1f1f1f;
   border-radius: 10px;
@@ -191,7 +189,7 @@ font-size: 1.3rem;
 user-select: none;
 }
 
-/* Buttons */
+
 .btn-accent {
 background: #ffd369;
 color: #121212;
@@ -208,7 +206,6 @@ background: #e6c254;
 color: #121212;
 }
 
-/* Contact */
 #contact-section p {
 font-size: 1.2rem;
 user-select: none;
@@ -226,7 +223,6 @@ font-weight: 600;
 text-decoration: underline;
 }
 
-/* Responsive */
 @media (max-width: 991px) {
 .sidebar {
 position: fixed;
