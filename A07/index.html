@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bob's Burgers Characters</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <style>
     body {
       background-image: url('town.jpg');
@@ -32,16 +33,22 @@
 </head>
 
 <body>
+  
   <div class="container-fluid py-3" style="background-color: #e0ae08;">
     <div class="container">
-      <div class="row">
-        <div class="col">
-          <div class="h3 text-white">Bob's Burgers Characters</div>
+      <div class="row align-items-center justify-content-between">
+        <div class="col-auto">
+          <a href="javascript:history.back()" class="btn btn-outline-dark">&larr; Return</a>
         </div>
+        <div class="col text-center">
+          <div class="h3 text-white m-0">Bob's Burgers Characters</div>
+        </div>
+        <div class="col-auto"></div>
       </div>
     </div>
   </div>
 
+  <!-- Characters container -->
   <div class="container mt-3">
     <div class="row" id="container"></div>
   </div>

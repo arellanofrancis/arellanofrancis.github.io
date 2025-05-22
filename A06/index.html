@@ -85,10 +85,10 @@
     function changeMode() {
       var body = document.getElementById("body");
       var colorBtn = document.getElementById("colorBtn");
-      mode = mode === "light" ? "dark" : "light";
+      mode = mode == "light" ? "dark" : "light";
 
-      var btnText = mode === "dark" ? "Light Mode" : "Dark Mode";
-      var btnClass = mode === "dark" ? "btn-light" : "btn-dark";
+      var btnText = mode == "dark" ? "Light Mode" : "Dark Mode";
+      var btnClass = mode == "dark" ? "btn-light" : "btn-dark";
 
       colorBtn.classList.remove("btn-light", "btn-dark");
       colorBtn.classList.add(btnClass);
@@ -151,7 +151,7 @@
 
     function toggleExpand(id) {
       var content = document.getElementById(id);
-      content.style.display = (content.style.display === "none" || content.style.display === "") ? "block" : "none";
+      content.style.display = (content.style.display == "none" || content.style.display == "") ? "block" : "none";
     }
   </script>
 
