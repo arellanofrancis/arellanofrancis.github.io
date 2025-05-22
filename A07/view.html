@@ -1,108 +1,80 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Demon Slayer Character Detail</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Character Details</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    .picture-container {
-      width: 200px;
-      height: 200px;
-      border-radius: 100px;
-      overflow: hidden;
-      margin: 30px auto;
+    body {
+      background-image: url('town.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
     }
+
+    .picture-container {
+      width: 300px;
+      height: 300px;
+      background-color: lightgrey;
+      border-radius: 200px;
+      overflow: hidden;
+    }
+
     .picture-container img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
     }
   </style>
 </head>
+
 <body>
-  <div class="container py-4">
-    <h2 class="text-center mb-4">Character Details</h2>
-    <div class="picture-container">
-      <img id="characterImg" src="" alt="" />
+  <div class="container-fluid py-3" style="background-color: #e0ae08;">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="h3 text-white">Character Details</div>
+        </div>
+      </div>
     </div>
-    <h3 id="characterName" class="text-center"></h3>
-    <p class="text-center fst-italic" id="characterQuote"></p>
+  </div>
 
-    <ul class="list-group mx-auto" style="max-width: 600px;">
-      <li class="list-group-item"><strong>Age:</strong> <span id="characterAge"></span></li>
-      <li class="list-group-item"><strong>Gender:</strong> <span id="characterGender"></span></li>
-      <li class="list-group-item"><strong>Race:</strong> <span id="characterRace"></span></li>
-      <li class="list-group-item"><strong>Description:</strong> <p id="characterDescription" class="mb-0"></p></li>
-    </ul>
-
-    <div class="text-center mt-4">
-      <a href="index.html" class="btn btn-secondary rounded-5">Back to Search</a>
+  <div class="container mt-3">
+    <a href="index.html" class="btn btn-outline-dark mb-3">&larr; Back to list</a>
+    <div class="row">
+      <div class="col-12">
+        <div class="card text-center p-5 rounded-5 shadow mx-auto">
+          <div class="picture-container mx-auto mb-3" id="picture-container">
+            <img src="" id="img" alt="Character Image">
+          </div>
+          <div class="h4" id="name"></div>
+          <div class="mt-2" id="occupation"></div>
+          <div class="mt-2" id="firstEpisode"></div>
+        </div>
+      </div>
     </div>
   </div>
 
   <script>
-   
-    const apiData = {
-      content: [
-        {
-          "id": 1,
-          "name": "Tanjiro Kamado",
-          "age": 16,
-          "gender": "Male",
-          "race": "Human",
-          "description": "Is the main protagonist of Demon Slayer. He joined the Demon Slayer Corp to find a remedy to turn his sister, Nezuko Kamado, back into a human and to hunt down and kill demons.",
-          "img": "https://www.demonslayer-api.com/api/v1/characters/images/1.webp",
-          "quote": "Work at it. All I can do is work hard! That´s the story of my life!"
-        },
-        {
-          "id": 2,
-          "name": "Nezuko Kamado",
-          "age": 14,
-          "gender": "Female",
-          "race": "Demon",
-          "description": "She is a demon and the younger sister of Tanjiro Kamado and one of the two remaining members of the Kamado family.",
-          "img": "https://www.demonslayer-api.com/api/v1/characters/images/2.webp",
-          "quote": "Humans are to be protected and saved... I will never hurt them."
-        },
-        {
-           "id": 4,
-          "name": "Sakonji Urokodaki",
-          "age": 70,
-          "gender": "Male",
-          "race": "Human",
-          "description": "Sakonji Urokodaki is a retired member of the Demon Slayer Corps, having held the position of the previous Water Hashira. He is the main cultivator of the Water Breathing style, having trained Makomo, Sabito, Giyu Tomioka, and Tanjiro Kamado.",
-          "img": "https://www.demonslayer-api.com/api/v1/characters/images/4.webp",
-          "affiliation_id": 3,
-          "arc_id": 1,
-          "quote": "Remember to take a long breath so the oxygen flows into every cell in your body."  
-        }
-      ]
-    };
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
 
-    function getQueryParam(param) {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(param);
+    const loadCharacter = async () => {
+      const response = await fetch("https://bobsburgers-api.herokuapp.com/characters/");
+      const characters = await response.json();
+      const character = characters[id];
+
+      document.getElementById("img").src = character.image;
+      document.getElementById("name").textContent = character.name;
+      document.getElementById("occupation").textContent = "Occupation: " + character.occupation;
+      document.getElementById("firstEpisode").textContent = "First Episode: " + character.firstEpisode;
     }
 
-    function displayCharacter(id) {
-      const char = apiData.content.find(c => c.id == id);
-      if (!char) {
-        document.body.innerHTML = '<div class="alert alert-danger text-center mt-5">Character not found.</div>';
-        return;
-      }
-      document.getElementById('characterImg').src = char.img;
-      document.getElementById('characterImg').alt = char.name;
-      document.getElementById('characterName').textContent = char.name;
-      document.getElementById('characterQuote').textContent = `“${char.quote}”`;
-      document.getElementById('characterAge').textContent = char.age;
-      document.getElementById('characterGender').textContent = char.gender;
-      document.getElementById('characterRace').textContent = char.race;
-      document.getElementById('characterDescription').textContent = char.description;
-    }
-
-    const charId = getQueryParam('id');
-    displayCharacter(charId);
+    loadCharacter();
   </script>
 </body>
+
 </html>
