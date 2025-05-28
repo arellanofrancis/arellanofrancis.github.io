@@ -1,0 +1,15 @@
+/*PUT YOUR CUSTOM STYLE HERE*/
+
+/*!This style is important, do not override!*/
+*  .main-content .column img:hover {
+    transform: scale(1.05);
+  }
+  @media (max-width: 768px) {
+    .main-content .row {
+      flex-direction: column;
+    }
+    .main-content .column {
+      flex: 1 100%;
+      padding: 10px;
+    }
+  }

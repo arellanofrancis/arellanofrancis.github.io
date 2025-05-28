@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="parallax.css" />
+	<title>EZ | Banner</title>
+</head>
+
+<body>
+
+	<button onclick="goBack()" style="position: fixed; top: 20px; left: 20px; padding: 10px 20px; background-color: #e84118; color: white; border: none; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 999;">
+	 Back
+	</button>
+
+	<section>
+		<div class="keyart" id="parallax">
+			<div class="keyart_layer parallax" id="keyart-0" data-speed="5"></div>
+			<div class="keyart_layer parallax" id="keyart-1" data-speed="7"></div>
+			<div class="keyart_layer parallax" id="keyart-2" data-speed="10"></div>
+			<div class="keyart_layer parallax" id="keyart-3" data-speed="19"></div>
+			<div class="keyart_layer parallax" id="keyart-4" data-speed="25"></div>
+			<div class="keyart_layer parallax" id="keyart-5" data-speed="29"></div>
+			<div class="keyart_layer parallax" id="keyart-6" data-speed="31"></div>
+			<div class="keyart_layer parallax" id="keyart-7" data-speed="40"></div>
+			<div class="keyart_layer parallax" id="keyart-8" data-speed="50"></div>
+			<!--Front image, in sync with scroll, no need to parallax-->
+		</div>
+	</section>
+
+	<section class="main-content">
+		<div class="container" style="padding: 60px 15px; background: linear-gradient(135deg, #0f0f0f, #1e1e2f); color: #f1f2f6; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+
+			<!-- Header Section -->
+			<div class="row" style="align-items: center; margin-bottom: 60px;">
+				<div class="column" style="flex: 1; padding: 20px;">
+					<h1 style="font-size: 3.5rem; color: #e84118; margin-bottom: 25px; text-shadow: 2px 2px 8px rgba(0,0,0,0.6);">Jujutsu Kaisen</h1>
+					<p style="font-size: 1.3rem; line-height: 1.8; color: #dcdde1; max-width: 90%;">
+						<strong>Jujutsu Kaisen</strong> is a dark fantasy anime and manga series by <em>Gege Akutami</em>. It follows Yuji Itadori as he joins a secret school of Jujutsu Sorcerers to battle curses and protect humanity. With intense action, emotional depth, and supernatural elements, it has become a fan favorite in the anime world.
+					</p>
+				</div>
+				<div class="column" style="flex: 1; padding: 20px; text-align: center;">
+					<img src="jjjk.jpg" alt="Jujutsu Kaisen Cover" style="max-width: 85%; border-radius: 20px; box-shadow: 0 20px 30px rgba(255,255,255,0.1); transition: transform 0.3s ease;">
+				</div>
+			</div>
+
+			<div class="row" style="margin-bottom: 40px; gap: 20px; flex-wrap: wrap; justify-content: center;">
+				<div class="column" style="flex: 1 1 45%; padding: 30px; background: radial-gradient(circle at top left, #2f3640, #1e272e); border-radius: 20px; box-shadow: 0 6px 15px rgba(0,0,0,0.5);">
+					<h2 style="color: #00a8ff; font-size: 2.2rem; margin-bottom: 20px; border-bottom: 2px solid #00a8ff; padding-bottom: 10px;">Main Characters</h2>
+					<ul style="font-size: 1.1rem; line-height: 2; color: #f5f6fa; list-style-type: square; padding-left: 25px;">
+						<li><strong>Yuji Itadori</strong> – A kind-hearted boy who becomes the host of Sukuna.</li>
+						<li><strong>Megumi Fushiguro</strong> – A sorcerer who uses shadow-based shikigami.</li>
+						<li><strong>Nobara Kugisaki</strong> – A fierce fighter with a unique curse technique using nails.</li>
+						<li><strong>Satoru Gojo</strong> – The strongest Jujutsu Sorcerer with unmatched power and charm.</li>
+						<li><strong>Maki Zenin</strong> – A weapon specialist with no cursed energy but exceptional skill and strength.</li>
+						<li><strong>Toge Inumaki</strong> – A quiet sorcerer who speaks in rice ball ingredients to wield cursed speech safely.</li>
+						<li><strong>Panda</strong> – A wise, sentient Cursed Corpse with different combat forms powered by unique cores.</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+	<!-- Uses JQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script type="text/javascript" src="js/parallax.js"></script>
+
+	>
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+
+</body>
+
+</html>
